@@ -1,5 +1,42 @@
 {
-    "editor.tabSize": 2,
-    "files.autoSave": "onFocusChange",
-    "editor.formatOnSave": true
+  "workbench.colorTheme": "Bearded Theme Coffee Reversed",
+  //기본 포멧팅 설정
+  "[javascript]": {
+    "editor.formatOnSave": false
+  },
+  //자동포멧팅
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnSave": true,
+  "bracket-pair-colorizer-2.depreciation-notice": false,
+  "window.zoomLevel": 1,
+  "editor.fontSize": 11.5,
+  "files.autoSave": "onFocusChange",
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+  "auto-close-tag.activationOnLanguage": [
+    "xml",
+    "php",
+    "blade",
+    "ejs",
+    "jinja",
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "plaintext",
+    "markdown",
+    "vue",
+    "liquid",
+    "erb",
+    "lang-cfml",
+    "cfml",
+    "HTML (EEx)",
+    "HTML (Eex)",
+    "plist"
+  ],
+  "eslint.alwaysShowStatus": true,
+  "editor.tabSize": 2,
+  "workbench.iconTheme": "vscode-icons",
+  "cSpell.userWords": ["Parens"]
 }

@@ -1,32 +1,90 @@
-import * as React from 'react';
-import {View, Text} from 'react-native';
-import {NavigationContainer} from '@react-navigation/native';
-import {createNativeStackNavigator} from '@react-navigation/native-stack';
+import React, { useRef } from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
+
+import Home from '../ch0/Home';
+import BannerSlider from '../example/BannerSlider';
+import Collapse from '../example/Collapse';
+import DrawerMenu from '../example/DrawerMenu';
+import FontSlider from '../example/FontSlider';
+import LayoutAnimationCollapse from '../example/LayoutAnimationCollapse';
+import LayoutAnimationPageHeader from '../example/LayoutAnimationPageHeader';
+import Modal from '../example/Modal';
+import ProgressBar from '../example/ProgressBar';
+import Skeleton from '../example/Skeleton';
+import Snackbar from '../example/Snackbar';
+import SnowBackground from '../example/SnowBackground';
 import YoutubeMusic from '../ch7/YoutubeMusic';
+import SamsungPay from '../ch8/SamsungPay';
 const Stack = createNativeStackNavigator();
 
-function HomeScreen() {
-  return <Text style={{color: 'red', borderColor: 'red'}}>Home Screen</Text>;
-}
-
-function DetailsScreen() {
-  return (
-    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
-      <Text>Details Screen</Text>
-    </View>
-  );
-}
-
 function Navigation() {
+  const navigationRef = useRef();
   return (
-    <NavigationContainer>
+    <NavigationContainer navigationRef={navigationRef}>
       <Stack.Navigator initialRouteName="YoutubeMusic">
+        <Stack.Screen name="Home" component={Home} options={detailOption} />
+        <Stack.Screen
+          name="Snackbar"
+          component={Snackbar}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="DrawerMenu"
+          component={DrawerMenu}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="Collapse"
+          component={Collapse}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="ProgressBar"
+          component={ProgressBar}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="Skeleton"
+          component={Skeleton}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="SnowBackground"
+          component={SnowBackground}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="LayoutAnimationCollapse"
+          component={LayoutAnimationCollapse}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="LayoutAnimationPageHeader"
+          component={LayoutAnimationPageHeader}
+          options={detailOption}
+        />
+        <Stack.Screen name="Modal" component={Modal} options={detailOption} />
+        <Stack.Screen
+          name="BannerSlider"
+          component={BannerSlider}
+          options={detailOption}
+        />
+        <Stack.Screen
+          name="FontSlider"
+          component={FontSlider}
+          options={detailOption}
+        />
         <Stack.Screen
           name="YoutubeMusic"
           component={YoutubeMusic}
-          options={noHeaderOption}
+          options={detailOption}
         />
-        <Stack.Screen name="Details" component={DetailsScreen} />
+        <Stack.Screen
+          name="SamsungPay"
+          component={SamsungPay}
+          options={detailOption}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );
@@ -34,7 +92,7 @@ function Navigation() {
 
 const noHeaderOption = {
   headerShown: false,
-  animationEnabled: false,
+  // animationEnabled: false,
 };
 
 const config = {
