@@ -7,33 +7,32 @@ import {
   Animated,
   TouchableWithoutFeedback,
 } from 'react-native';
-import HomeBtnLayout from './HomeBtnLayout';
+import HomeBtnLayout from '../HomeBtnLayout';
 import data from '../data/collapse';
 
 export default function Collapse() {
-
+  // 나머지 값들을 전부 올렸다가 내렸다가 하는 방법도 있지 않을띾/?
   return (
     <SafeAreaView>
       <HomeBtnLayout />
       <Text style={{ padding: 30, fontSize: 20 }}>Animated Collapse</Text>
       {data.map((value, index) => {
+        const listRef = useRef(0);
         const [open, setOpen] = useState();
-        const translation = useRef(new Animated.Value(100)).current;
+        const translation = useRef(new Animated.Value(-50)).current;
+
         const onShowPress = () => {
-          setOpen(true);
-          translation.setValue(100);
+          console.log(123)
           Animated.timing(translation, {
             toValue: 0,
             duration: 300,
-            useNativeDriver: false,
+            useNativeDriver: true,
           }).start();
         };
 
         const onHidePress = () => {
-          setOpen(false);
-          translation.setValue(0);
           Animated.timing(translation, {
-            toValue: 100,
+            toValue: -100,
             duration: 300,
             useNativeDriver: false,
           }).start();
@@ -51,22 +50,34 @@ export default function Collapse() {
               </View>
             </TouchableWithoutFeedback>
 
-            {open && (
-              <Animated.View
-                style={[
-                  styles.collapseAnswer,
-                  {
-                    transform: [{ translateY: translation }],
-                    opacity: translation.interpolate({
-                      inputRange: [0, 100],
-                      outputRange: [1, 0],
-                    }),
-                  },
-                ]}
-              >
-                <Text style={styles.collapseAnswerText}>{value.a}</Text>
-              </Animated.View>
-            )}
+            <Animated.View
+              ref={listRef}
+              onLayout={e => console.log(e.nativeEvent.layout)}
+              style={[
+                styles.collapseAnswer,
+                {
+                  // padding: translation.interpolate({
+                  //   inputRange: [0, 100],
+                  //   outputRange: [0, 20],
+                  // }),
+                  // padding: translation.interpolate({
+                  //   inputRange: [-50, 1],
+                  //   outputRange: [0, 1],
+                  // }),
+                  // height: translation.interpolate({
+                  //   inputRange: [0, 100],
+                  //   outputRange: [0, 50],
+                  // }),
+                  transform: [{ translateY: translation }],
+                  opacity: translation.interpolate({
+                    inputRange: [-50, 1],
+                    outputRange: [0, 1],
+                  }),
+                },
+              ]}
+            >
+              <Text style={styles.collapseAnswerText}>{value.a}</Text>
+            </Animated.View>
           </View>
         );
       })}
@@ -81,6 +92,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 1,
     width: '100%',
     padding: 20,
+    zIndex: 100,
   },
   collapseQuestionText: {
     color: 'white',
@@ -91,7 +103,6 @@ const styles = StyleSheet.create({
     borderBottomColor: '#ddd',
     borderBottomWidth: 1,
     width: '100%',
-    padding: 20,
     paddingLeft: 40,
   },
   collapseAnswerText: {

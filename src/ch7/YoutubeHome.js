@@ -11,7 +11,11 @@ import { playlist } from './lib/data';
 
 export default function YoutubeHome({ onScroll }) {
   return (
-    <ScrollView style={styles.wrapper} onScroll={e => onScroll(e)}>
+    <ScrollView
+      scrollEventThrottle={16}
+      style={styles.wrapper}
+      onScroll={e => onScroll(e)}
+    >
       <View />
       <View
         style={{
