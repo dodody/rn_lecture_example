@@ -1,32 +1,52 @@
 // 01. Animated 기본 개념, components (10)
-import React, {useRef} from 'react';
-import {StyleSheet, Animated, Button} from 'react-native';
+import React, { useRef, useState } from 'react';
+import { Animated, Button, View, Text } from 'react-native';
 const AnimatedButton = Animated.createAnimatedComponent(Button);
 
-export function Clip1() {
-  const opacityAnim = useRef(new Animated.Value(1)).current;
+export default function Clip1() {
+  const opacityAnim = useRef(new Animated.Value(0)).current;
+  // const [dody, setDody] = useState(0);
+  const opacityAnimStatus = () => opacityAnim.addListener(({ value }) => console.log(value));
+  // opacityAnim.removeListener(opacityAnimStatus);
+  // opacityAnim.removeAllListeners();
+
 
   const animatedHide = () => {
+    // opacityAnimStatus()
+    opacityAnim.setValue(0);
     Animated.timing(opacityAnim, {
-      toValue: 0,
-      duration: 500,
+      toValue: 1,
+      duration: 1000,
       useNativeDriver: true,
     }).start();
+
+    
+    // setTimeout(() => {
+    //   // opacityAnim.setOffset(0.1);
+    //   // opacityAnim.flattenOffset();
+    //   opacityAnim.stopAnimation()
+    //   // opacityAnim.resetAnimation()
+    // }, 1000);
   };
 
   return (
-    <>
+    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
       <Button title="버튼" onPress={animatedHide} />
       <Animated.View
-        style={[
-          styles.circle,
-          {
-            opacity: opacityAnim,
-          },
-        ]}
+        style={{
+          width: 100,
+          height: 100,
+          borderRadius: opacityAnim.interpolate({
+            inputRange: [0, 1], 
+            outputRange: [100, 1], 
+            extrapolateRight: 'identity'
+          }),
+          backgroundColor: '#ffa100',
+          opacity: opacityAnim,
+        }}
       />
 
-      <AnimatedButton
+      {/* <AnimatedButton
         title="애니메이션이 가능해진 버튼"
         style={[
           styles.circle,
@@ -34,16 +54,7 @@ export function Clip1() {
             opacity: opacityAnim,
           },
         ]}
-      />
-    </>
+      /> */}
+    </View>
   );
 }
-
-const styles = StyleSheet.create({
-  circle: {
-    width: 100,
-    height: 100,
-    borderRadius: 100,
-    backgroundColor: '#ffa100',
-  },
-});

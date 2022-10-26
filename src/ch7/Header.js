@@ -12,14 +12,16 @@ import IconButton from './IconButton';
 
 // ! 값은 랜덤하게 했다. 정확하지 않게 내 눈에 이쁘게, 하지만 최대한 비슷하게!
 // ! 이것이 클론 코딩의 재미가 아닐까 싶네요
-export default function Header(props) {
+export default function Header({opacityAnim}) {
   const onProfilePress = () => {};
   const onCastBtnPress = () => {};
-  const onSearchBtnPress = () => {};
+  const onSearchBtnPress = () => { };
+  
+  console.log(1, opacityAnim)
 
+  {/* // ! SafeAreaView는 스타일링이 가능한 컴포넌트 입니다 */}
   return (
     <View style={styles.wrapper}>
-      {/* // ! SafeAreaView는 스타일링이 가능한 컴포넌트 입니다 */}
       <SafeAreaView style={styles.header}>
         {/* 로고 */}
         <Image style={styles.logo} source={require('../img/logo.png')} />

@@ -6,7 +6,7 @@ import {
   SafeAreaView,
   TouchableHighlight,
 } from 'react-native';
-import HomeBtnLayout from './HomeBtnLayout';
+import HomeBtnLayout from '../HomeBtnLayout';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 // ! 나둥에 유저 행동을

@@ -7,7 +7,7 @@ import {
   LayoutAnimation,
   TouchableWithoutFeedback,
 } from 'react-native';
-import HomeBtnLayout from './HomeBtnLayout';
+import HomeBtnLayout from '../HomeBtnLayout';
 import data from '../data/collapse'
 
 export default function LayoutAnimationCollapse() {

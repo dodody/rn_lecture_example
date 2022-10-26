@@ -26,7 +26,6 @@ export default function FullPlaylistHeader({ setSize }) {
         onBtnPress={onHidePress}
       />
 
-      {/* // ! 이거 애니메이션 들어가도 좋을 듯 */}
       <View style={styles.toggleWrapper}>
         <View style={styles.toggle}>
           <TouchableWithoutFeedback onPress={onTogglePress}>

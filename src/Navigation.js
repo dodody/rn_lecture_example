@@ -2,28 +2,42 @@ import React, { useRef } from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import Home from '../ch0/Home';
-import BannerSlider from '../example/BannerSlider';
-import Collapse from '../example/Collapse';
-import DrawerMenu from '../example/DrawerMenu';
-import FontSlider from '../example/FontSlider';
-import LayoutAnimationCollapse from '../example/LayoutAnimationCollapse';
-import LayoutAnimationPageHeader from '../example/LayoutAnimationPageHeader';
-import Modal from '../example/Modal';
-import ProgressBar from '../example/ProgressBar';
-import Skeleton from '../example/Skeleton';
-import Snackbar from '../example/Snackbar';
-import SnowBackground from '../example/SnowBackground';
-import YoutubeMusic from '../ch7/YoutubeMusic';
-import SamsungPay from '../ch8/SamsungPay';
+import Home from 'Home';
+// ch2
+import Clip2 from './ch2/Clip3';
+import Clip4 from './ch2/Clip4';
+import Clip5 from './ch2/Clip5';
+import Clip6 from './ch2/Clip6';
+// import Clip2 from './ch2/Clip2'
+
+import BannerSlider from './example/BannerSlider';
+import Collapse from './example/Collapse';
+import DrawerMenu from './example/DrawerMenu';
+import FontSlider from './example/FontSlider';
+import LayoutAnimationCollapse from './example/LayoutAnimationCollapse';
+import LayoutAnimationPageHeader from './example/LayoutAnimationPageHeader';
+import Modal from './example/Modal';
+import ProgressBar from './example/ProgressBar';
+import Skeleton from './example/Skeleton';
+import Snackbar from './example/Snackbar';
+import SnowBackground from './example/SnowBackground';
+import YoutubeMusic from './ch7/YoutubeMusic';
+import SamsungPay from './ch8/SamsungPay';
 const Stack = createNativeStackNavigator();
 
 function Navigation() {
   const navigationRef = useRef();
   return (
     <NavigationContainer navigationRef={navigationRef}>
-      <Stack.Navigator initialRouteName="YoutubeMusic">
+      <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={Home} options={detailOption} />
+        {/*  */}
+        <Stack.Screen name="Clip2" component={Clip2} options={detailOption} />
+        <Stack.Screen name="Clip4" component={Clip4} options={detailOption} />
+        <Stack.Screen name="Clip5" component={Clip5} options={detailOption} />
+        <Stack.Screen name="Clip6" component={Clip6} options={detailOption} />
+        {/* <Stack.Screen name="Home" component={Home} options={detailOption} />
+        <Stack.Screen name="Home" component={Home} options={detailOption} /> */}
         <Stack.Screen
           name="Snackbar"
           component={Snackbar}

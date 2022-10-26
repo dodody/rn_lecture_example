@@ -1,6 +1,6 @@
 import React from 'react';
 import { StyleSheet, Text, View, SafeAreaView, ScrollView } from 'react-native';
-import HomeBtnLayout from './HomeBtnLayout';
+import HomeBtnLayout from '../HomeBtnLayout';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 
 export default function Skeleton() {
